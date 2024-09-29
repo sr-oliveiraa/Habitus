@@ -1,0 +1,10 @@
+setup.py
+monitor_sistema/__init__.py
+monitor_sistema/cli.py
+monitor_sistema/monitor.py
+monitor_sistema.egg-info/PKG-INFO
+monitor_sistema.egg-info/SOURCES.txt
+monitor_sistema.egg-info/dependency_links.txt
+monitor_sistema.egg-info/entry_points.txt
+monitor_sistema.egg-info/requires.txt
+monitor_sistema.egg-info/top_level.txt

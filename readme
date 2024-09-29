@@ -1,0 +1,82 @@
+# Monitor de Sistema via CLI
+
+Este projeto é um monitor de sistema baseado em linha de comando (CLI) que fornece informações em tempo real sobre o uso de CPU, memória, disco, GPU e rede. É especialmente útil para jogadores e programadores que desejam acompanhar o desempenho do sistema e garantir que tudo esteja funcionando de forma ideal.
+
+## Funcionalidades
+
+- **Monitoramento de CPU**: Verifica o uso da CPU e envia alertas se ultrapassar um limite configurável.
+- **Monitoramento de Memória**: Monitora o uso da memória e emite alertas se o uso for excessivo.
+- **Monitoramento de Disco**: Mostra o percentual de uso dos discos montados e envia alertas se o uso ultrapassar um limite definido.
+- **Monitoramento de GPU**: Exibe o percentual de uso da GPU e a temperatura (se disponível).
+- **Monitoramento de Rede**: Mede a velocidade de download e upload, além do tráfego de dados.
+- **Monitoramento de Latência**: Verifica a latência de rede (ping) para um servidor específico e emite alertas se a latência for alta.
+- **Monitoramento de Temperatura**: Monitora a temperatura da CPU e de outros sensores.
+- **Listagem de Processos**: Exibe uma lista de processos em execução, incluindo uso de CPU.
+
+## Pré-requisitos
+
+Antes de começar, verifique se você possui o Python instalado (versão 3.6 ou superior). Além disso, você precisará instalar as bibliotecas necessárias. 
+
+## Instalação
+
+1. Clone este repositório:
+   
+
+
+2. pip install -r requirements.txt
+
+
+3. python setup.py install
+
+
+
+Claro! Aqui está a seção "Uso" reformulada em formato de texto:
+
+---
+
+## Uso
+
+Para utilizar o monitor de sistema, você pode executar os seguintes comandos no terminal, dependendo da funcionalidade que deseja acessar:
+
+- Para **monitorar o uso da CPU**, utilize o comando:
+  ```
+  monitor-sistema --cpu
+  ```
+
+- Para **monitorar o uso de memória**, execute:
+  ```
+  monitor-sistema --memoria
+  ```
+
+- Para **monitorar o uso do disco**, digite:
+  ```
+  monitor-sistema --disco
+  ```
+
+- Para **monitorar o uso da GPU**, utilize:
+  ```
+  monitor-sistema --gpu
+  ```
+
+- Para **monitorar a velocidade e tráfego da rede**, execute:
+  ```
+  monitor-sistema --rede
+  ```
+
+- Para **verificar a latência de rede (ping)**, digite:
+  ```
+  monitor-sistema --ping
+  ```
+
+- Para **monitorar a temperatura do sistema**, utilize:
+  ```
+  monitor-sistema --temperatura
+  ```
+
+- Para **listar os processos em execução**, digite:
+  ```
+  monitor-sistema --processos
+  ```
+
+Certifique-se de que o comando correspondente esteja incluído no seu terminal e execute-o para obter informações detalhadas sobre o componente do sistema que você deseja monitorar.
+
