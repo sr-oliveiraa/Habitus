@@ -6,20 +6,13 @@ from ping3 import ping
 
 
 # Função para monitorar CPU
-def monitor_cpu(limite_alerta=90):
-    uso_cpu = psutil.cpu_percent(interval=1)
-    print(f"Uso da CPU: {uso_cpu}%")
-    if uso_cpu > limite_alerta:
-        print(f"ALERTA: Uso de CPU acima de {limite_alerta}%!")
-
+def monitor_cpu():
+    print(f"Uso da CPU: {psutil.cpu_percent(interval=1)}%")
 
 # Função para monitorar Memória
-def monitor_memoria(limite_alerta=90):
+def monitor_memoria():
     memoria = psutil.virtual_memory()
     print(f"Uso de Memória: {memoria.percent}%")
-    if memoria.percent > limite_alerta:
-        print(f"ALERTA: Uso de memória acima de {limite_alerta}%!")
-
 
 # Função para monitorar o uso do Disco
 def monitor_disco(limite_alerta=90):
@@ -30,7 +23,6 @@ def monitor_disco(limite_alerta=90):
         if uso_disco.percent > limite_alerta:
             print(f"ALERTA: Uso de disco acima de {limite_alerta}% no {disco.device}")
 
-
 # Função para monitorar a GPU
 def monitor_gpu():
     gpus = GPUtil.getGPUs()
@@ -40,7 +32,6 @@ def monitor_gpu():
             print(f"Temperatura da GPU ({gpu.name}): {gpu.temperature}°C")
     else:
         print("Nenhuma GPU detectada.")
-
 
 # Função para monitorar Rede (velocidade de conexão e tráfego de dados)
 def monitor_rede():
@@ -58,7 +49,6 @@ def monitor_rede():
     print(f"Total Enviado: {io_rede.bytes_sent / 1_000_000:.2f} MB")
     print(f"Total Recebido: {io_rede.bytes_recv / 1_000_000:.2f} MB")
 
-
 # Função para monitorar Latência de Rede (Ping)
 def monitor_ping(host='8.8.8.8', limite_alerta=100):
     latencia = ping(host) * 1000  # Convertido para ms
@@ -68,23 +58,6 @@ def monitor_ping(host='8.8.8.8', limite_alerta=100):
         print(f"Ping para {host}: {latencia:.2f} ms")
         if latencia > limite_alerta:
             print(f"ALERTA: Latência alta (>{limite_alerta} ms) para o servidor {host}")
-
-
-# Função para monitorar a temperatura do sistema
-def monitor_temperatura():
-    # Monitoramento da temperatura da CPU
-    for sensor in psutil.sensors_temperatures().get('coretemp', []):
-        print(f"Temperatura da CPU: {sensor.current}°C")
-    # Adicionar monitoramento de outros sensores se disponível
-
-
-# Função para listar processos em execução
-def listar_processos():
-    processos = [(p.pid, p.info['name'], p.info['cpu_percent']) for p in psutil.process_iter(attrs=['pid', 'name', 'cpu_percent'])]
-    print(f"{'PID':<10} {'Nome do Processo':<30} {'Uso de CPU (%)':<15}")
-    print('-' * 60)
-    for pid, nome, uso_cpu in processos:
-        print(f"{pid:<10} {nome:<30} {uso_cpu:<15}")
 
 
 # Função principal do CLI
@@ -98,9 +71,7 @@ def main():
     parser.add_argument('--gpu', action='store_true', help="Monitora o uso da GPU")
     parser.add_argument('--rede', action='store_true', help="Monitora a velocidade e tráfego de Rede")
     parser.add_argument('--ping', action='store_true', help="Verifica a latência de rede (Ping)")
-    parser.add_argument('--temperatura', action='store_true', help="Monitora a temperatura do sistema")
-    parser.add_argument('--processos', action='store_true', help="Lista processos em execução")
-
+    
     # Parse dos argumentos
     args = parser.parse_args()
 
@@ -117,12 +88,8 @@ def main():
         monitor_rede()
     elif args.ping:
         monitor_ping()
-    elif args.temperatura:
-        monitor_temperatura()
-    elif args.processos:
-        listar_processos()
     else:
-        print("Por favor, use uma das opções: --cpu, --memoria, --disco, --gpu, --rede, --ping, --temperatura, --processos")
+        print("Por favor, use uma das opções: --cpu, --memoria, --disco, --gpu, --rede, --ping")
 
 if __name__ == "__main__":
     main()
